@@ -1,0 +1,265 @@
+<form #f="ngForm" action="#" class="prsb-form" style="margin-bottom: 5rem;">
+    <label>Subscriber Details</label><br>
+    <div class="flex-container">
+        <div class="flex-item">
+            <label for="healthNumber">Health Number</label>
+            <input [(ngModel)]="selectedSubscriber.healthNo" type="text" [placeholder]="'0000000000'" minlength="10" name="healthNumber" id="healthNumber" [disabled]="healthNumber">
+        </div>
+        <div class="flex-item">
+            <label for="surname">Surname</label>
+            <input #Surname="ngModel" [(ngModel)]="selectedSubscriber.surname" type="text" required name="Surname" id="Surname" [disabled]="surname">
+        </div>
+        <div class="flex-item">
+            <label for="firstName">First Name</label>
+            <input #firstname="ngModel" [(ngModel)]="selectedSubscriber.firstName" type="text" required name="firstName" id="firstName" [disabled]="firstName">
+        </div>
+        <div class="flex-item-small">
+            <fieldset>
+                <legend style="overflow: hidden; white-space: nowrap; transform: translateX(-40px);">Revoke Consent</legend>
+                <input [ngModel]="selectedSubscriber.revokeConsent" (ngModelChange)="selectedSubscriber.revokeConsentBool=$event" type="checkbox" name="revokeConsent" id="revokeConsent" class="checkbox" [disabled]="revoke">
+            </fieldset>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item">
+        </div>
+        <div class="flex-item">
+            <div *ngIf="submitted || (Surname.touched&&Surname.invalid)">
+                <div class="flex-container error-message" *ngIf="Surname.errors?.required">Missing Patient Surname</div>
+            </div>
+        </div>
+        <div class="flex-item">
+            <div *ngIf="submitted || (firstname.touched&&firstname.invalid)">
+                <div class="flex-container error-message" *ngIf="firstname.errors?.required">Missing Patient First Name</div>
+            </div>
+        </div>
+        <div class="flex-item-small"></div>
+    </div>
+    <label>Request Details</label><br>
+    <div class="flex-container">
+        <div class="flex-item">
+            <label for="fileNumber">File Number</label>
+            <input [(ngModel)]="model.fileNo" type="text" name="fileNumber" id="fileNumber" [disabled]="fileNo">
+        </div>
+        <div class="flex-item">
+            <label for="daysOpened">Days Opened</label>
+            <input value="{{calculateDays(model.fileStarted,model.fileClosed)}}" type="text" name="daysOpened" id="daysOpened" [disabled]="daysOpen">
+        </div>
+        <div class="flex-item-large">
+            <label for="Clerk">Clerk</label>
+            <input #Clerk="ngModel" [(ngModel)]="model.clerk" type="text" required name="Clerk" id="Clerk" [disabled]="clerk">
+        </div>   
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-small"></div>
+        <div class="flex-item-small"></div>
+        <div class="flex-item-large" style="transform: translateX(-80px);">
+            <div *ngIf="submitted || (Clerk.touched&&Clerk.invalid)">
+                <div class="flex-container error-message" *ngIf="Clerk.errors?.required">Missing Clerk Name</div>
+            </div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Type">Type</label>
+            <select #Type="ngModel" [compareWith]="compareByTypeId" [(ngModel)]="model.type" name="Type" id="Type" required [disabled]="type">
+                <option *ngFor="let type of types" [ngValue]="type">{{type.typeDescription}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="received">Received</label>
+            <input [(ngModel)]="model.fileOpened" type="date" name="received" id="received" [disabled]="opened">
+        </div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (Type.touched&&Type.invalid)">
+                <div class="flex-container error-message" *ngIf="Type.errors?.required">Type Required</div>
+            </div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="openedDisplay ? 'inline-block' : 'none'">{{openedError}}</div>
+        </div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Status">Status</label>
+            <select #Status="ngModel" [compareWith]="compareByStatusId" [(ngModel)]="model.status" name="Status" id="Status" required [disabled]="status">
+                <option [selected]='status.statusDescription == "Pending"' *ngFor="let status of statuses" [ngValue]="status">{{status.statusDescription}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="Started">Started</label>
+            <input [(ngModel)]="model.fileStarted" type="date" name="Started" id="Started" [disabled]="started">
+        </div>
+        <div class="flex-item">
+            <label for="noOfYears">No Of Years</label>
+            <input value="{{calculateYears(model.historyFrom,model.historyTo)}}" type="text" name="noOfYears" id="noOfYears" [disabled]="noYears">
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (Status.touched&&Status.invalid)">
+                <div class="flex-container error-message" *ngIf="Status.errors?.required">Status Required</div>
+            </div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="startedDisplay ? 'inline-block' : 'none'">{{startedError}}</div>
+        </div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Reason">Reason</label>
+            <select #Reason="ngModel" [compareWith]="compareByReasonId" [(ngModel)]="model.reason" name="Reason" id="Reason" required [disabled]="reason">
+                <option *ngFor="let reason of reasons" [ngValue]="reason">{{reason.reasonDescription}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="closed">Closed</label>
+            <input [(ngModel)]="model.fileClosed" type="date" name="closed" id="closed" [disabled]="closed">
+        </div>
+        <div class="flex-item-small">
+            <label for="cost">Cost</label>
+            <input [(ngModel)]="model.cost" type="text" name="cost" id="cost" [disabled]="cost">
+        </div>
+        <div class="flex-item-small">
+            <fieldset>
+                <legend>US $</legend>
+                <input [ngModel]="model.usDollar" (ngModelChange)="model.usDollarBool=$event" type="checkbox" name="costType" id="costType" class="checkbox" [disabled]="moneyType">
+            </fieldset>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (Reason.touched&&Reason.invalid)">
+                <div class="flex-container error-message" *ngIf="Reason.errors?.required">Reason Required</div>
+            </div>
+        </div>
+        <div class="flex-item" >
+            <div class="flex-container error-message" [style.display]="closedDisplay ? 'inline-block' : 'none'">{{closedError}}</div>
+        </div>
+        <div class="flex-item" >
+            <div class="flex-container error-message" [style.display]="costDisplay ? 'inline-block' : 'none'">{{costError}}</div>
+        </div>
+        <div class="flex-item-small"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Office">Office</label>
+            <select [compareWith]="compareByOfficeId" [(ngModel)]="model.office" name="Office" id="Office" [disabled]="office">
+                <option *ngFor="let office of offices" [ngValue]="office">{{office.officeName}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="chequeNo">Cheque No</label>
+            <input [(ngModel)]="model.chequeNo" type="text" name="chequeNo" id="chequeNo" [disabled]="chequeNo">
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(145px);">
+            <div class="flex-container error-message" [style.display]="officeDisplay ? 'inline-block' : 'none'">{{officeError}}</div>
+        </div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Disclosure">Disclosure</label>
+            <select #Disclosure="ngModel" [compareWith]="compareByDisclosureId" [(ngModel)]="model.disclose" name="Disclosure" id="Disclosure" required [disabled]="disclosure">
+                <option *ngFor="let disclosure of disclosures" [ngValue]="disclosure">{{disclosure.discloseTypeDescription}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="claimHistoryFrom">Claim History From</label>
+            <input [(ngModel)]="model.historyFrom" type="date" name="claimHistoryFrom" id="claimHistoryFrom" [disabled]="historyFrom">
+        </div>
+        <div class="flex-item">
+            <label for="chequeDate">Cheque Date</label>
+            <input [(ngModel)]="model.chequeDate" type="date" name="chequeDate" id="chequeDate" [disabled]="chequeDate">
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (Disclosure.touched&&Disclosure.invalid)">
+                <div class="flex-container error-message" *ngIf="Disclosure.errors?.required">Disclosure Required</div>
+            </div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="historyFromDisplay ? 'inline-block' : 'none'">{{historyFromError}}</div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="chequeDateDisplay ? 'inline-block' : 'none'">{{chequeDateError}}</div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="Firm">Firm</label>
+            <input #Firm="ngModel" [(ngModel)]="model.firm" type="text" name="Firm" id="Firm" required [disabled]="firm">
+        </div>
+        <div class="flex-item">
+            <label for="claimHistoryTo">To</label>
+            <input [(ngModel)]="model.historyTo" type="date" name="claimHistoryTo" id="claimHistoryTo" [disabled]="historyTo">
+        </div>
+        <div class="flex-item">
+            <label for="chequeSent">Cheque Sent</label>
+            <input [(ngModel)]="model.chequeSent" type="date" name="chequeSent" id="chequeSent" [disabled]="chequeSent">
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (Firm.touched&&Firm.invalid)">
+                <div class="flex-container error-message" *ngIf="Firm.errors?.required">Missing Firm Name</div>
+            </div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="historyToDisplay ? 'inline-block' : 'none'">{{historyToError}}</div>
+        </div>
+        <div class="flex-item">
+            <div class="flex-container error-message" [style.display]="chequeSentDisplay ? 'inline-block' : 'none'">{{chequeSentError}}</div>
+        </div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large">
+            <label for="city">City</label>
+            <select #City="ngModel" [compareWith]="compareByCityId" [(ngModel)]="model.city" name="City" id="City" required [disabled]="city">
+                <option *ngFor="let city of citys" [ngValue]="city">{{city.city}}</option>
+            </select>
+        </div>
+        <div class="flex-item">
+            <label for="extension">30 Day Exten</label>
+            <select [(ngModel)]="model.timeExtension" name="extension" id="extension" [disabled]="dayExtend">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <div class="flex-item-large" style="transform: translateX(-90px);">
+            <div *ngIf="submitted || (City.touched&&City.invalid)">
+                <div class="flex-container error-message" *ngIf="City.errors?.required">City Required</div>
+            </div>
+        </div>
+        <div class="flex-item"></div>
+        <div class="flex-item"></div>
+    </div>
+    <div class="flex-container">
+        <label for="comments">Comments</label>
+        <textarea [(ngModel)]="model.comments" name="comments" id="comments" cols="30" rows="10" [disabled]="comment"></textarea>
+    </div>
+    <div class="flex-container" style="justify-content: flex-end;">
+        <div class="button">
+            <button type="button" id="cancel" value="Cancel" (click)="cancel()" class="prsb-button">Cancel</button>
+            <button id="save" [style.display]="mode === 'add' || mode === 'edit' || mode === 'dummy' || mode === 'addSubscriber' ? 'inline-block' : 'none'" value="Save" class="prsb-button" (click)="save(f)">Save</button>
+            <button type="button" id="edit" [style.display]="mode === 'view' ? 'inline-block' : 'none'" value="Edit" [routerLink]="['/edit-request',{subid: this.selectedSubscriber.subscribersID,reqid:this.model.requestID}]" class="prsb-button">Edit</button>
+            <button type="button" id="delete" [style.display]="mode === 'view' ? 'inline-block' : 'none'" value="Delete" class="prsb-button" (click)="deleteRequest()">Delete</button>
+<!--            <button id="add" value="Add" class="prsb-button" (click)="addRequest()">Add</button>-->
+            <button type="button" id="print" [style.display]="mode === 'view' ? 'inline-block' : 'none'" value="Print" class="prsb-button">Print</button>
+        </div>
+    </div>
+</form>

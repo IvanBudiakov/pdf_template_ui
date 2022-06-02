@@ -1,0 +1,40 @@
+<div>
+    <app-header-form></app-header-form>
+    <div class="main">
+        <h1>PDF template manager</h1>
+        <p class="ontario-columns ontario-medium-4">Find your templates, add new ones, edit or delete them.</p>
+    </div>
+    <hr>
+
+    <table class = "prsb-detail-table" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- <tr *ngFor="template of templates;">
+            <td *ngIf="template.id%2==0" style="background-color: #ededed;"><a target="_blank" routerLink="view:/${template.serviceCode}">{{template.name}}</a></td>
+            <td *ngIf="template.id%2==1" style="background-color: #4d4d4d;"><a target="_blank" routerLink="view:/${template.serviceCode}">{{template.name}}</a></td>
+        </tr>
+        -->
+        <tr>
+            <td><a target="_blank" routerLink="view:/${template.serviceCode}">WIN application</a></td>
+        </tr>
+        <tr>
+            <td><a target="_blank" routerLink="view:/${template.serviceCode}">Bursary application</a></td>
+        </tr>
+        <tr>
+            <td><a href="">Sumbit concerns</a></td>
+        </tr>
+        <tr>
+            <td><a href="">Apply for health card</a></td>
+        </tr>
+        
+        </tbody>  
+    </table>
+
+
+    <app-nav-bar-form></app-nav-bar-form>
+    <app-footer-form></app-footer-form>
+</div>

@@ -1,0 +1,54 @@
+<!-- <nav class="navbar">
+    <div class="flex-container" style="justify-content: space-around;">
+        <div class="flex-item-small nav-item">
+            <a href="#" class="nav-link" routerLink="/add-find-form">Add/Find</a>
+        </div>
+        <div class="flex-item-small">
+            <div class="dropdown">
+                <button class="dropbtn" style="box-shadow: none;">Queries
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="#" [routerLink]="['/pending-Claims-Reference-Query', {id: 'pending-Claims-Reference-Query'}]" > Pending Claims Reference Requests</a>
+                  <a href="#" [routerLink]="['/pending-Non-Access-Query', {id: 'pending-Non-Access-Query'}]">Pending Non-Access Requests</a>
+                  <a href="#" [routerLink]="['/returned-Non-Access-Query', {id: 'returned-Non-Access-Query'}]">get Returned Non-Access Query</a>
+                  <a href="#" [routerLink]="['/returned-Claims-Reference-Query', {id: 'returned-Claims-Reference-Query'}]">get Returned Claims Reference Query</a>
+                  <a href="#" [routerLink]="['/request-Type-Last-3-Months-Query', {id: 'request-Type-Last-3-Months-Query'}]">Request Type - Last 3 Months</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-item-small">
+            <div class="dropdown">
+                <button class="dropbtn" style="box-shadow: none;">Reports
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                  <a href="#" [routerLink]="['/aging-pending-time', {id: 'aging-pending-time'}]" >Aging Pending Time</a>
+                  <a href="#" [routerLink]="['/claims-requests', {id: 'claims-requests'}]" >Claims Referance Information Requests</a>
+                  <a href="#" [routerLink]="['/payment-record', {id: 'payment-record'}]">Payment Transmittal Record</a>
+                  <a href="#" [routerLink]="['/personal-requests', {id: 'personal-requests'}]">Personal Health Information Requests</a>
+                  <a href="#" [routerLink]="['/process-time', {id: 'process-time'}]">Process Time</a>
+                  <a href="#" [routerLink]="['/query-requests', {id: 'query-requests'}]">Query LES Requests</a>
+                </div>
+            </div>
+        </div>
+        <div class="flex-item-small" *ngIf="(isAdmin$ | async)">
+            <a class="nav-link" href="#" routerLink="/system-defaults" routerLinkActive="active">System Defaults</a>
+        </div>
+        <div class="flex-item-small" *ngIf="(isAdmin$ | async)">
+            <div class="dropdown">
+                <button class="dropbtn" style="box-shadow: none;">Lists
+                  <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content rdropdown-content">
+                    <a href="#" [routerLink]="['/city-form', {id: 'city-form'}]" >City</a>
+                    <a href="#" [routerLink]="['/disclosure-type-form', {id: 'disclosure-type-form'}]" >Disclosure Type</a>
+                    <a href="#" [routerLink]="['/office-form', {id: 'office-form'}]" >Office</a>
+                    <a href="#" [routerLink]="['/reason-form', {id: 'reason-form'}]" >Reason</a>
+                    <a href="#" [routerLink]="['/status-form', {id: 'status-form'}]" >Status</a>
+                    <a href="#" [routerLink]="['/type-form', {id: 'type-form'}]" >Type</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav> -->
