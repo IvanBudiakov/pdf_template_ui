@@ -1,54 +1,15 @@
 <app-header-form></app-header-form>
-<div class="prsb-center-align">
-    <div class="prsb-lg">
+<div class="prsb-col">
+    <div class="main">
         <h1>PDF template manager</h1>
         <p class="">Find your templates, add new ones, edit or delete them.</p>
         <hr>
+        <h2>Templates</h2>
+
+        <app-table></app-table>
         
-        <table class="prsb-detail-table" style="width:100%">
-            <!-- <thead> -->
-                <tr>
-                    <th><h5 class="prsb-white-text prsb-justify-content-left">Name</h5></th>
-                </tr>
-                <!-- </thead> -->
-                <tbody>
-        <!-- <tr *ngFor="template of templates;">
-            <td *ngIf="template.id%2==0" style="background-color: #ededed;">
-                <a target="_blank" routerLink="view:/${template.serviceCode}">
-                    {{template.name}}</a></td>
-                    <td *ngIf="template.id%2==1" style="background-color: #4d4d4d;">
-                        <a target="_blank" routerLink="view:/${template.serviceCode}">
-                            {{template.name}}</a></td>
-                        </tr> -->
-                        <tr>
-                            <td><a target="_blank" routerLink="view:/${template.serviceCode}">
-                                WIN application</a></td>
-                            </tr>
-                            <tr>
-                                <td><a target="_blank" routerLink="view:/${template.serviceCode}">
-                                    Bursary application</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a target="_blank" routerLink="view:/${template.serviceCode}">
-                                        Sumbit concerns</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a target="_blank" routerLink="view:/${template.serviceCode}"
-                                            >Apply for health card</a></td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <button class="ui-button">Previous</button>
-                                                <button class="ui-button prsb-margin-left20">Next</button>
-                                            </th>
-            </tr>
-        </tbody>  
-    </table>
-    
-    <button style="float:right;margin-top:1.5rem">Add Template</button>
-</div>
-    
-    
+        <button [ngStyle]="{'float':'right','margin-top':'1.5rem'}">Add Template</button>
+    </div>
     <app-nav-bar-form></app-nav-bar-form>
     <app-footer-form></app-footer-form>
 </div>

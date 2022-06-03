@@ -1,0 +1,24 @@
+<table mdbTable #tableEl="mdbTable" class="prsb-detail-table" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                <h5 class="prsb-white-text prsb-justify-content-left">Name</h5>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let template of templates">
+            <td><a target="_blank" routerLink="view:/{{template.serviceCode}}">
+                    {{template.name}}</a></td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td [ngStyle]="{'background-color':'#ededed'}">
+                <mdb-table-pagination 
+                [ngStyle]="{'cursor':'pointer'}"
+                [tableEl]="tableEl" [searchDataSource]="templates" class="prsb-vertic-center"></mdb-table-pagination>
+            </td>
+        </tr>
+    </tfoot>
+</table>
