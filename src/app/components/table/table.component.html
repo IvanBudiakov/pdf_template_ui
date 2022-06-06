@@ -7,18 +7,43 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let template of templates">
-            <td><a target="_blank" routerLink="view:/{{template.serviceCode}}">
-                    {{template.name}}</a></td>
+        <tr *ngFor="let template of templates; let i = index">
+            <td *ngIf="i + 1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row">
+                <a target="_blank" routerLink="view/:{{template?.serviceCode}}">{{template?.name}}</a>
+            </td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <td [ngStyle]="{'background-color':'#ededed'}">
-                <mdb-table-pagination 
-                [ngStyle]="{'cursor':'pointer'}"
-                [tableEl]="tableEl" [searchDataSource]="templates" class="prsb-vertic-center"></mdb-table-pagination>
+                <mdb-table-pagination dashKeyword="..." [ngStyle]="{'cursor':'pointer'}" [tableEl]="tableEl"
+                    [searchDataSource]="templates" class="prsb-vertic-center">
+                </mdb-table-pagination>
             </td>
         </tr>
     </tfoot>
 </table>
+
+
+<!-- <div class="container">
+    <table mdbTable #tableEl="mdbTable" class="z-depth-1">
+        <thead>
+            <tr>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let el of elements; let i = index">
+                <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                    {{el.first}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="elements"></mdb-table-pagination>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div> -->

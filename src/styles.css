@@ -1464,3 +1464,13 @@ top: 0px !important;
     right: 0;
   }
 }
+
+/* mdb-table-pagination{
+  display:flex;
+  justify-content:center ;
+} */
+
+mdb-table-pagination li{
+  display: inline;
+  padding: .5rem;
+}
