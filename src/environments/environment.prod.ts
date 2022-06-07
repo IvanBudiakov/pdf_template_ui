@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  redirectUri: 'https://prouction url',
+  restBase: 'https://prouction url/'
 };

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { WavesModule, TableModule } from 'angular-bootstrap-md';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -8,6 +7,9 @@ import { FooterComponent } from './components/templates/footer/footer.component'
 import { HeaderComponent } from './components/templates/header/header.component';
 import { NavBarComponent } from './components/templates/nav-bar/nav-bar.component';
 import { TableComponent } from './components/table/table.component';
+import { NgxPaginationModule } from "ngx-pagination";
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -21,8 +23,8 @@ import { TableComponent } from './components/table/table.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WavesModule,
-    TableModule
+    NgxPaginationModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
