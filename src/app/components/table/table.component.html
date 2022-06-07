@@ -1,13 +1,12 @@
-<select class="selection-size" style="margin-bottom: 0rem" (change)="onTableSizeChange($event)" >
-    <option *ngFor="let size of tableSizes" [selected]="tableSize === size">
-        {{ size }}
-    </option>
-</select>
 <table class="prsb-detail-table" style="width:100%">
     <thead>
         <tr>
-            <th>
-                <h5 class="prsb-white-text prsb-justify-content-left">Name</h5>
+            <th style="position:relative"> <h5 class="prsb-white-text prsb-justify-content-left">Name</h5>
+                <select class="selection-size" style=" position:absolute; right:0; top:0; margin: .4rem" (change)="onTableSizeChange($event)">
+                    <option *ngFor="let size of tableSizes" [selected]="tableSize === size">
+                        {{ size }}
+                    </option>
+                </select>
             </th>
         </tr>
     </thead>
@@ -26,17 +25,14 @@
     <tfoot>
         <tr>
             <td [ngStyle]="{'background-color':'#ededed'}">
-                
+
             </td>
         </tr>
     </tfoot>
 </table>
 
 <div style="justify-content: center;">
-    <pagination-controls
-            previousLabel="Prev"
-            nextLabel="Next"
-            (pageChange)="onTableDataChange($event)">
+    <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
     </pagination-controls>
 </div>
 
