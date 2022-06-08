@@ -4,7 +4,6 @@ import { TemplatesService } from 'src/app/services/templates.service';
 import { Router } from "@angular/router";
 import { take } from "rxjs/operators";
 import { ApicallService } from "../../services/apicall.service";
-// import {AdminService} from "../../../Services/admin.service";
 
 @Component({
   selector: 'app-table',
@@ -17,35 +16,34 @@ export class TableComponent implements OnInit {
   previous: any = [];
   page = 1;
   count = 0;
-  tableSize = 10;
+  tableSize = 5;
   tableSizes = [5, 10, 20];
   x : any
 
-  constructor(private templateService :  TemplatesService,
+  constructor(
+              // private templateService :  TemplatesService,
               private apiCall: ApicallService, 
-              // private adminService: AdminService, 
-              private router: Router
+              // private router: Router
              ) {}
     
 
-  async ngOnInit() {
-    await this.fetchPosts()
+  ngOnInit() {
+    this.fetchData()
     console.log(this.templates) 
   }
   
-  fetchPosts(): void {
-    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(retTemplates=>{this.templates=retTemplates});
+  fetchData(): void {
+    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(ret=>{this.templates = ret; console.log(this.templates)});
   }
   
   onTableDataChange(event: any){
     this.page = event;
-    this.fetchPosts();
+    this.fetchData();
   }
 
   onTableSizeChange(event: any): void {
       this.tableSize = event.target.value;
       this.page = 1;
-      this.fetchPosts();
+      this.fetchData();
   }
-
 }

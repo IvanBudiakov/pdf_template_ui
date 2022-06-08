@@ -9,6 +9,7 @@ import { NavBarComponent } from './components/templates/nav-bar/nav-bar.componen
 import { TableComponent } from './components/table/table.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { HttpClientModule } from '@angular/common/http';
+import { ApicallService } from './services/apicall.service';
 
 
 @NgModule({
