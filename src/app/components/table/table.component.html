@@ -1,9 +1,13 @@
 <table class="prsb-detail-table" style="width:100%">
     <thead>
         <tr>
-            <th style="position:relative">
-                <h5 class="prsb-white-text prsb-justify-content-left">Name</h5>
-                <select class="selection-size" style="border-radius:.5rem;position:absolute; right:0; top:0; margin: .4rem"
+            <th style="position:relative; border-radius:.5rem 0 0 0">
+                <h5 class="prsb-white-text prsb-justify-content-left prsb-margin-0">ID</h5>
+            </th>
+            <th style="position:relative; border-radius: 0 .5rem 0 0">
+                <h5 class="prsb-white-text prsb-justify-content-left prsb-margin-0">Name</h5>
+                <select class="selection-size prsb-margin-0"
+                    style="border-radius:0 .5rem 0 0;position:absolute;right:0; top:0;"
                     (change)="onTableSizeChange($event)">
                     <option *ngFor="let size of tableSizes" [selected]="tableSize === size">
                         {{ size }}
@@ -19,22 +23,26 @@
             totalItems : count
             };
             let i = index;">
+            <td class="prsb-xxsm ">
+                {{template.id}}
+            </td>
             <td>
-                <a target="_blank" routerLink="view/:{{template?.serviceCodeEntity?.service_code}}">{{template?.serviceCodeEntity?.name}}</a>
+                <a target="_blank"
+                    routerLink="view/:{{template?.serviceCodeEntity?.service_code}}">{{template?.serviceCodeEntity?.name}}</a>
             </td>
         </tr>
     </tbody>
-    <tfoot>
-        <tr>
-            <td [ngStyle]="{'background-color':'#ededed'}">
-
-            </td>
-        </tr>
-    </tfoot>
+    <!-- <tfoot> -->
+    <!-- <tr> -->
+    <!-- <td colspan="2" [ngStyle]="{'background-color':'#ededed'}" class="prsb-center-align" > -->
+    <!-- </td> -->
+    <!-- </tr> -->
+    <!-- </tfoot> -->
 </table>
+<div style="padding-bottom: 0" [ngStyle]="{'background-color':'#ededed', 'border-radius':'0 0 .5rem .5rem'}">
+    <pagination-controls class="prsb-center-align" previousLabel="Prev" nextLabel="Next"
+        (pageChange)="onTableDataChange($event)">
+    </pagination-controls>
 
-<pagination-controls 
-    previousLabel="Prev" 
-    nextLabel="Next" 
-    (pageChange)="onTableDataChange($event)">
-</pagination-controls>
+
+</div>

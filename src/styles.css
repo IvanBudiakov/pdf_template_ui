@@ -1465,12 +1465,9 @@ top: 0px !important;
   }
 }
 
-/* mdb-table-pagination{
-  display:flex;
-  justify-content:center ;
-} */
 
-mdb-table-pagination li{
-  display: inline;
-  padding: .5rem;
+nav > ul.ngx-pagination{
+  margin: .2rem !important;
+  color:white !important;
+
 }
