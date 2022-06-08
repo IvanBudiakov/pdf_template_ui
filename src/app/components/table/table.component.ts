@@ -18,8 +18,7 @@ export class TableComponent implements OnInit {
   count = 0;
   tableSize = 5;
   tableSizes = [5, 10, 20];
-  x : any
-
+  
   constructor(
               // private templateService :  TemplatesService,
               private apiCall: ApicallService, 

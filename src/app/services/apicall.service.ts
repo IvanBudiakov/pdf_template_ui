@@ -18,7 +18,7 @@ export class ApicallService {
   getAllTemplates(): Observable<Template[]> {
     return this.httpClient.get<Template[]>(this.baseURL+'/templates/findAll');
   }
-  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error); 
