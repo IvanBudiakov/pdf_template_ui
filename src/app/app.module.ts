@@ -5,10 +5,13 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/templates/footer/footer.component';
 import { HeaderComponent } from './components/templates/header/header.component';
-import { NavBarComponent } from './components/templates/nav-bar/nav-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { NgxPaginationModule } from "ngx-pagination";
 import { HttpClientModule } from '@angular/common/http';
+import { DetailsComponent } from './components/details/details.component';
+import { EditComponent } from './components/details/edit/edit.component';
+import { BackComponent } from './components/templates/back/back.component';
+import { AddTemplateComponent } from './components/add-template/add-template.component';
 
 
 @NgModule({
@@ -17,8 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     FooterComponent,
     HeaderComponent,
-    NavBarComponent,
-    TableComponent
+    TableComponent,
+    DetailsComponent,
+    EditComponent,
+    BackComponent,
+    AddTemplateComponent
   ],
   imports: [
     BrowserModule,

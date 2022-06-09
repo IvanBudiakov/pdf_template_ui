@@ -19,12 +19,8 @@ export class ApicallService {
     return this.httpClient.get<Template[]>(this.baseURL+'/templates/findAll');
   }
 
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); 
-      console.log(`${operation} failed: ${error.message}`);
-      return of(result as T);
-    };
+  getTemplateById( id : string ): Observable<Template> {
+    return this.httpClient.get<Template>(this.baseURL + '/templates/findById?id=' + id)
   }
   
 }
