@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from '../templates/footer/footer.component';
-import { HeaderComponent } from '../templates/header/header.component';
-import { NavBarComponent } from '../templates/nav-bar/nav-bar.component';
 
 
 @Component({

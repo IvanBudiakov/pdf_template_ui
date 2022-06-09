@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from 'src/app/model/template';
 import { TemplatesService } from 'src/app/services/templates.service';
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { take } from "rxjs/operators";
 import { ApicallService } from "../../services/apicall.service";
 
@@ -28,11 +28,10 @@ export class TableComponent implements OnInit {
 
   ngOnInit() {
     this.fetchData()
-    console.log(this.templates) 
   }
   
   fetchData(): void {
-    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(ret=>{this.templates = ret; console.log(this.templates)});
+    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(ret=>{this.templates = ret.sort()});
   }
   
   onTableDataChange(event: any){
@@ -45,4 +44,6 @@ export class TableComponent implements OnInit {
       this.page = 1;
       this.fetchData();
   }
+  
+
 }

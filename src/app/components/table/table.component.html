@@ -21,28 +21,25 @@
             itemsPerPage : tableSize,
             currentPage : page,
             totalItems : count
-            };
-            let i = index;">
-            <td class="prsb-xxsm ">
-                {{template.id}}
-            </td>
-            <td>
-                <a target="_blank"
-                    routerLink="view/:{{template?.serviceCodeEntity?.service_code}}">{{template?.serviceCodeEntity?.name}}</a>
-            </td>
-        </tr>
+        };
+        let i = index;">
+        <td class="prsb-xxsm">
+            {{template.id}}
+        </td>
+        <td>
+            <a 
+            routerLink="/templates/details/:{{template?.id}}" routerLinkActive="active" ariaCurrentWhenActive="page">
+            {{template?.serviceCodeEntity?.name}}</a>
+        </td>
+    </tr>
     </tbody>
-    <!-- <tfoot> -->
-    <!-- <tr> -->
-    <!-- <td colspan="2" [ngStyle]="{'background-color':'#ededed'}" class="prsb-center-align" > -->
-    <!-- </td> -->
-    <!-- </tr> -->
-    <!-- </tfoot> -->
 </table>
-<div style="padding-bottom: 0" [ngStyle]="{'background-color':'#ededed', 'border-radius':'0 0 .5rem .5rem'}">
+
+
+<div [ngStyle]="{'background-color':'#ededed', 'border-radius':'0 0 .5rem .5rem', 'margin-top':'.25rem'}">
     <pagination-controls class="prsb-center-align" previousLabel="Prev" nextLabel="Next"
-        (pageChange)="onTableDataChange($event)">
-    </pagination-controls>
-
-
+    (pageChange)="onTableDataChange($event)">
+</pagination-controls>
 </div>
+<router-outlet></router-outlet>
+

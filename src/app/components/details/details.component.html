@@ -1,0 +1,26 @@
+<header style="background-color: #4d4d4d;">
+    <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">{{template?.serviceCodeEntity?.name}}</h2>
+</header>
+
+<p>Created: {{template?.create_time}}</p>
+<p>Last modified: {{template?.update_time}}</p>
+<h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
+<a class="nav-link margin-0">View HTML</a>
+
+<!-- <h3>Effective Date : {{template?.effective_date}}</h3> -->
+<div class="prsb-lg">
+    <div id="alertMessagesBox" class="prsb-alert-box prsb-warning ">
+        <span class="prsb-lg-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="none">
+                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffd440" />
+                <path d="M11 10h2v4h-2zm0 6h2v2h-2z" fill="#000" />
+            </svg>
+            Expires {{template?.end_date}}</span>
+    </div>
+</div>
+
+<app-go-back></app-go-back>
+<button class="prsb-margin-left20" routerLink="edit">Edit Template</button>
+
+<router-outlet></router-outlet>
+
