@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Template } from 'src/app/model/template';
-import { TemplatesService } from 'src/app/services/templates.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { take } from "rxjs/operators";
 import { ApicallService } from "../../services/apicall.service";
 

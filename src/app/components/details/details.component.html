@@ -1,3 +1,4 @@
+<div style="padding-bottom:7rem">
 <header style="background-color: #4d4d4d;">
     <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">{{template?.serviceCodeEntity?.name}}</h2>
 </header>
@@ -5,7 +6,8 @@
 <p>Created: {{template?.create_time}}</p>
 <p>Last modified: {{template?.update_time}}</p>
 <h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
-<a class="nav-link margin-0">View HTML</a>
+<a class="clickable">View HTML</a>
+<br/><br/>
 
 <!-- <h3>Effective Date : {{template?.effective_date}}</h3> -->
 <div class="prsb-lg">
@@ -19,8 +21,10 @@
     </div>
 </div>
 
-<app-go-back></app-go-back>
-<button class="prsb-margin-left20" routerLink="edit">Edit Template</button>
+<button routerLink="edit">Edit Template</button>
 
+<app-go-back></app-go-back>
+</div>
 <router-outlet></router-outlet>
+
 

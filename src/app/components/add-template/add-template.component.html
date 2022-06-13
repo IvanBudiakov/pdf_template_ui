@@ -1,6 +1,26 @@
-<p>add-template works!</p>
+<div style="padding-bottom : 7rem">
+    <label for="serviceCode">Service</label>
+    <select [(ngModel)]="template.serviceCodeEntity.service_code" name="serviceCode" id="serviceCode" class="round-corner prsb-med">
+    <!-- <select [(ngModel)]="template.serviceCodeEntity.service_code" name="serviceCode" id="serviceCode" class="round-corner prsb-med"> -->
+        <option *ngFor="let service of services; let i = index" value="{{service.service_code}}">
+            {{service.name}}</option>
+    </select>
+
+    <div class="prsb-sm">
 
 
+        <label for="effDate">Effective Date</label>
+        <input [(ngModel)]="template.effective_date" class="round-corner" type="date" name="effDate" id="effDate" />
+
+        <label for="expDate">Expiry Date</label>
+        <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="">
 
 
-<app-go-back></app-go-back>
+    </div>
+
+    <button type="submit" (click)="addTemplate()">Add template</button>
+
+
+    <app-go-back></app-go-back>
+
+</div>

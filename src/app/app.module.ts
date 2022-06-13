@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +12,8 @@ import { DetailsComponent } from './components/details/details.component';
 import { EditComponent } from './components/details/edit/edit.component';
 import { BackComponent } from './components/templates/back/back.component';
 import { AddTemplateComponent } from './components/add-template/add-template.component';
-
+import { FormsModule } from '@angular/forms';
+import { ConfigloadService } from './services/configload.service';
 
 @NgModule({
   declarations: [
@@ -24,15 +25,32 @@ import { AddTemplateComponent } from './components/add-template/add-template.com
     DetailsComponent,
     EditComponent,
     BackComponent,
-    AddTemplateComponent
+    AddTemplateComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    // ConfigloadService,
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (configloadService: ConfigloadService) =>
+    //   configloadService.getAllServices(),
+    //   deps: [ConfigloadService],
+    //   multi: true
+    // },
+    // {
+    //   provide: APP_INITIALIZER,
+    //   useFactory: (configloadService: ConfigloadService) =>
+    //   configloadService.getAllTemplates(),
+    //   deps: [ConfigloadService],
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
