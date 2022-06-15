@@ -1,0 +1,5 @@
+<div class="file-input" >
+    <input type="file" accept=".txt, .html" id="file" (change)="onChange($event)" class="prsb-input-file">
+    <label *ngIf="this.files" [className]="this.isExt?'correct-file':'wrong-file'" for="file">{{this.files[0].name}}</label>
+    <label *ngIf="!this.files" for="file" class="initial">Select Template</label>
+</div>

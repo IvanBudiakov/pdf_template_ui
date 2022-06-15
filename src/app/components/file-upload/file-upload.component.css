@@ -1,0 +1,54 @@
+.prsb-input-file {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+
+label {
+    display: block;
+    position: relative;
+    min-width: 11rem;
+    padding:0 1rem 0 1rem;
+    height: 2.5rem;
+    border-radius: .5rem;
+    border:#06c solid 2px;
+    color: #06c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .2s ease-out;
+}
+
+.file-input{
+    display: flex;
+    flex-direction: row;
+    margin: 1rem 0 2rem 0;
+    align-items:center;
+    
+}
+
+input:hover+label,
+input:focus+label {
+    transform: scale(1.02);
+}
+
+i{
+    margin-left:1rem;
+}
+
+.initial{
+    color: #06c;
+    border-color: #06c;
+}
+
+.wrong-file{
+    color: #d00 !important;
+    border-color: #dd0000 !important;
+}
+
+.correct-file{
+    color: #008b52 !important;
+    border-color: #008b52 !important;
+}

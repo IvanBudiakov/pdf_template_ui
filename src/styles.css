@@ -1468,3 +1468,10 @@ nav > ul.ngx-pagination{
   color:white !important;
 
 }
+
+
+p.hint{
+  margin-top: 0;
+  color:#9c9c9c;
+  font-size: .9rem;
+}

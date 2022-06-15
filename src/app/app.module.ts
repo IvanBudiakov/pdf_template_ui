@@ -14,6 +14,7 @@ import { BackComponent } from './components/templates/back/back.component';
 import { AddTemplateComponent } from './components/add-template/add-template.component';
 import { FormsModule } from '@angular/forms';
 import { ConfigloadService } from './services/configload.service';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ConfigloadService } from './services/configload.service';
     EditComponent,
     BackComponent,
     AddTemplateComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { ConfigloadService } from './services/configload.service';
     FormsModule
   ],
   providers: [
+    FileUploadComponent
     // ConfigloadService,
     // {
     //   provide: APP_INITIALIZER,
