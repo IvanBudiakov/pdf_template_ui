@@ -6,11 +6,11 @@
 <p>Created: {{template?.create_time}}</p>
 <p>Last modified: {{template?.update_time}}</p>
 <h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
-<a class="clickable">View HTML</a>
+<a class="clickable">View template</a>
 <br/><br/>
 
 <!-- <h3>Effective Date : {{template?.effective_date}}</h3> -->
-<div class="prsb-lg">
+<div *ngIf="template.end_date" class="prsb-lg">
     <div id="alertMessagesBox" class="prsb-alert-box prsb-warning ">
         <span class="prsb-lg-text">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="none">
@@ -20,6 +20,7 @@
             Expires {{template?.end_date}}</span>
     </div>
 </div>
+
 
 <button routerLink="edit">Edit Template</button>
 

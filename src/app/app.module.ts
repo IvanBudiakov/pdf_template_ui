@@ -14,7 +14,8 @@ import { BackComponent } from './components/templates/back/back.component';
 import { AddTemplateComponent } from './components/add-template/add-template.component';
 import { FormsModule } from '@angular/forms';
 import { ConfigloadService } from './services/configload.service';
-import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { SuccessComponent } from './components/add-template/success/success.component';
+import { FileUploadComponent } from './components/add-template/file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     BackComponent,
     AddTemplateComponent,
     FileUploadComponent,
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

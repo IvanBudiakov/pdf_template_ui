@@ -36,5 +36,15 @@ export class ApicallService {
     const body = JSON.stringify(template);
     return this.httpClient.post(this.baseURL + '/templates/addTemplate', body, {'headers':headers})
   }
+
+  updateTemplate( template : Template )  : Observable<any>{
+    const headers = { 'content-type': 'application/json'};
+    template.update_time = new Date();
+    
+    const body = JSON.stringify(template);
+    return this.httpClient.post(this.baseURL + '/templates/updateTemplate', body, {'headers':headers})
+  }
+
+
   
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -8,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  isOpen !: boolean
+
+  constructor(
+    private activatedroute : ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
+    this.activatedroute.data.subscribe(data=>{
+      this.isOpen = data['isOpen']
+    })
   }
 
 }

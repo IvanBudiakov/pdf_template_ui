@@ -1,6 +1,35 @@
+
+    <header class="prsb-vertic-center" style="background-color: #d00;">
+        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">in development</h2>
+            <!-- {{template?.serviceCodeEntity?.name}} -->
+    </header>
 <div style="padding-bottom:7rem">
 
-    <p>edit works!</p>
+    <header style="background-color: #4d4d4d;">
+        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">Template Name</h2>
+            <!-- {{template?.serviceCodeEntity?.name}} -->
+    </header>
+
+
+    <div class="prsb-sm">
+
+        <label for="effDate">Effective date <small>(optional)</small> </label>
+        <input class="round-corner" type="date" name="effDate" id="effDate" />
+        <!-- [(ngModel)]="template.effective_date"  -->
+
+        <label for="expDate">Expiry date <small>(optional)</small></label>
+        <input class="round-corner" type="date" name="expDAte" id="">
+        <!-- [(ngModel)]="template.end_date" -->
+
+        <br><br>
+
+
+        <app-file-upload></app-file-upload>
+
+    </div>
+
+
+
 
     <app-go-back></app-go-back>
 

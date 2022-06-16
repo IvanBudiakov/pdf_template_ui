@@ -13,14 +13,14 @@ export class DetailsComponent implements OnInit {
 
   id !: string;
   template !: Template;
-  constructor(  
-      private route: ActivatedRoute,
-      private apicall : ApicallService
-    ) { }
+  constructor(
+    private route: ActivatedRoute,
+    private apicall: ApicallService
+  ) { }
 
   ngOnInit(): void {
-      this.id = this.route.snapshot.paramMap.get('id')?.substring(1)!
-        this.apicall.getTemplateById(this.id).subscribe(temp =>{this.template = temp});
+    this.id = this.route.snapshot.paramMap.get('id')?.substring(1)!;
+    this.apicall.getTemplateById(this.id).subscribe(temp => { this.template = temp });
 
   }
 

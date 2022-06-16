@@ -19,13 +19,14 @@ export class FileUploadComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    content = null;
+
   }
 
   // On file Select
   onChange(event: Event) {
     this.files = (event.target as HTMLInputElement).files!;
     let file = this.files[0];
-
     if (this.checkExt(file)) {
       this.isExt = true;
       console.table(file);

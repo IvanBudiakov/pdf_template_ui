@@ -1,0 +1,32 @@
+.prsb-alert{
+    font-family: "Raleway", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    background: #ededed;
+    border-color: rgb(49, 155, 0);
+    border-width: 0 0 0 .475rem;
+    border-style: solid;
+    padding: .5rem;
+    margin-bottom: 1.25rem;
+    color: #333;
+    position: relative;
+    width: 100%;
+  }
+
+  .prsb-alert.prsb-success {
+    background: #e6fad2;
+    position: relative;
+  }
+
+  .icon{
+    position:absolute;
+    top:2rem;
+  }
+
+  .success-text{
+        margin-left:2rem
+  }
+
+  .close{
+    right:1rem;
+  }

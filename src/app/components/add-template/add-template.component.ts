@@ -3,8 +3,8 @@ import { Template } from '../../model/template';
 import { Service } from 'src/app/model/service';
 import { Component, OnInit } from '@angular/core';
 import { ApicallService } from 'src/app/services/apicall.service';
-import { content } from '../file-upload/file-upload.component';
-import { fileExt } from '../file-upload/file-upload.component';
+import { content } from './file-upload/file-upload.component';
+import { fileExt } from './file-upload/file-upload.component';
 import { Router } from '@angular/router';
 
 // import { ConfigloadService } from 'src/app/services/configload.service';
@@ -19,6 +19,8 @@ export class AddTemplateComponent implements OnInit{
   isValid : boolean = true;
   services !: Service[];
   res : any;
+  showMsg !: boolean;
+  wait : any;
   
 
   constructor(
@@ -32,11 +34,14 @@ export class AddTemplateComponent implements OnInit{
   }
 
   addTemplate() : void{
-    if(this.validateFields()){
-      this.template.html = content    
-      this.apicall.addTemplate(this.template).subscribe(data => {console.warn(data);})
-      this.isValid = true;
-      this.router.navigateByUrl('/home');
+    if(this.validateFields() && content !== null){
+      this.template.html = content;    
+      this.apicall.addTemplate(this.template).subscribe(data => {
+        console.warn(data);
+        this.isValid = true;
+        setTimeout(()=>{this.router.navigateByUrl('/home')}, 1000);
+        this.showMsg = true;
+      })
     } else 
       this.isValid = false;  
   }
@@ -46,11 +51,11 @@ export class AddTemplateComponent implements OnInit{
   }
 
   validateFields() : boolean{
-    return (this.serviceCheck() && fileExt)
+    return (this.serviceCheck() && fileExt && content!==null)
   }
 
   getExt(){
-    return fileExt;
+    return fileExt && content!=null;
   }
 
 }
