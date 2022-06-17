@@ -10,24 +10,29 @@
     </select>
 
     <div class="prsb-sm">
-        
+
         <label for="effDate">Effective date <small>(optional)</small> </label>
-        <input [(ngModel)]="template.effective_date" class="round-corner" type="date" name="effDate" id="effDate" />
+        <input [(ngModel)]="template.effective_date" class="round-corner" type="date" min="{{this.today}}"
+            max="{{this.in10Years}}" name="effDate" id="effDate">
 
         <label for="expDate">Expiry date <small>(optional)</small></label>
-        <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="">
+        <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="expDate"
+            min="{{this.today}}" max="{{this.in10Years}}">
 
-        <!-- add html input | work on app_initializer | start update template -->
+        <!-- app_initializer -->
 
     </div>
+
+    <p *ngIf="this.validateDates()" class="wrong">{{validateDates()}}</p>
+
 
     <label for="upload" [ngClass]="(!isValid && !this.getExt())?'wrong':''">Upload a template
         <small>(required)</small></label>
     <p class="hint">Browse your local machine to upload a file of type html or txt</p>
     <app-file-upload id="upload" name="upload"></app-file-upload>
 
-    <i *ngIf="!isValid" style="color:red" class="error">Fix the fields highlighted with red to add a template</i><br>
-    <button type="submit"  (click)="addTemplate()">Add template</button>
+    <p *ngIf="!isValid" class="wrong">Fix highlighted fields to add a template</p><br>
+    <button type="submit" (click)="addTemplate()">Add template</button>
 
 
     <app-go-back></app-go-back>

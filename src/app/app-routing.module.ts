@@ -4,7 +4,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { HomeComponent } from './components/home/home.component';
 import { EditComponent } from './components/details/edit/edit.component';
 import { AddTemplateComponent } from './components/add-template/add-template.component';
-import { SuccessComponent } from './components/add-template/success/success.component';
+// import { SuccessComponent } from './components/templates/success/success.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
