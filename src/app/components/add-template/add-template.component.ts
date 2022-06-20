@@ -58,11 +58,11 @@ export class AddTemplateComponent implements OnInit {
   }
 
   serviceCheck(): boolean {
-    return (this.template.serviceCodeEntity.service_code !== undefined)
+    return (this.template.serviceCodeEntity.service_code !== undefined);
   }
 
   validateFields(): boolean {
-    return (this.serviceCheck() && this.getExt() && this.validateDates() === null)
+    return (this.serviceCheck() && this.getExt() && this.validateDates() === null);
   }
 
   getExt() {
@@ -70,12 +70,10 @@ export class AddTemplateComponent implements OnInit {
   }
 
   validateDates(): string | null {
-
     let fromDate = new Date(this.template.effective_date?.toString().slice(0, 10).replace(/-/g, '/'));
     let toDate = new Date(this.template.end_date?.toString().slice(0, 10).replace(/-/g, '/'));
 
     let today = new Date();
-    // today.setDate(today.getDate()+1);
     today.setHours(0, 0, 0, 0);
 
     if (fromDate && toDate && (fromDate > toDate))
@@ -83,11 +81,11 @@ export class AddTemplateComponent implements OnInit {
     else if (fromDate && (fromDate < today))
       return 'The template cannot become effective before today';
     else if (toDate && (toDate < today))
-      return 'The template cannot expire before today'
+      return 'The template cannot expire before today';
     else if ((fromDate && (fromDate.getFullYear() > (today.getFullYear() + 99))) || 
               (toDate && (toDate.getFullYear() > (today.getFullYear() + 99))))
       return 'Templates are only stored for 99 years';
-    return null
+    return null;
   }
 
 }

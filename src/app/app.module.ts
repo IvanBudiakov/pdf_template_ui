@@ -39,22 +39,22 @@ import { FileUploadComponent } from './components/add-template/file-upload/file-
     FormsModule
   ],
   providers: [
-    FileUploadComponent
-    // ConfigloadService,
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (configloadService: ConfigloadService) =>
-    //   configloadService.getAllServices(),
-    //   deps: [ConfigloadService],
-    //   multi: true
-    // },
-    // {
-    //   provide: APP_INITIALIZER,
-    //   useFactory: (configloadService: ConfigloadService) =>
-    //   configloadService.getAllTemplates(),
-    //   deps: [ConfigloadService],
-    //   multi: true
-    // }
+    FileUploadComponent,
+    ConfigloadService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (configloadService: ConfigloadService) => 
+        () => configloadService.getAllServices(),
+      deps: [ConfigloadService],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (configloadService: ConfigloadService) => 
+        () => configloadService.getAllTemplates(),
+      deps: [ConfigloadService],
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

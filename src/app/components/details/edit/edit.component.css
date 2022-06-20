@@ -1,3 +1,24 @@
-.round-corner{
-    border-radius : .3rem;
+.round-corner {
+    border-radius: .3rem;
+}
+
+.clickable {
+    color: #06c;
+    font-size: 1.2rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    /* width : 100%; */
+}
+
+.red {
+    background-color: #d00;
+}
+
+.green {
+    background-color: #008b52;
 }

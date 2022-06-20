@@ -16,18 +16,18 @@ export class ConfigloadService implements OnInit{
 
   ngOnInit(){
   }
-
+  
+  getAllTemplates() {
+    this.apicall.getAllTemplates().pipe(take(1)).subscribe(allTemplates => { this.allTemplates = allTemplates } );
+  }
+  
+  getAllServices() : void{
+    this.apicall.getAllServices().pipe(take(1)).subscribe(allServices => { this.allServices = allServices } );
+  }
+  
   pull() : void{
     this.getAllTemplates();
     this.getAllServices();
   }
-
-  getAllTemplates() {
-    this.apicall.getAllTemplates().pipe(take(1)).subscribe(allTemplates => { this.allTemplates = allTemplates } );
-  }
-
-  getAllServices() : void{
-    this.apicall.getAllServices().pipe(take(1)).subscribe(allServices => { this.allServices = allServices } );
-  }
-
+  
 }

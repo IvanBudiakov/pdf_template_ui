@@ -1,33 +1,37 @@
-
-    <header class="prsb-vertic-center" style="background-color: #d00;">
-        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">in development</h2>
-            <!-- {{template?.serviceCodeEntity?.name}} -->
-    </header>
+<!-- <header class="prsb-vertic-center" style="background-color: #d00;"><h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">in development</h2></header> -->
 <div style="padding-bottom:7rem">
 
+    <app-success *ngIf="this.showMsg"></app-success>
+
     <header style="background-color: #4d4d4d;">
-        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">Template Name</h2>
-            <!-- {{template?.serviceCodeEntity?.name}} -->
+        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">{{template?.serviceCodeEntity?.name}}</h2>
+        <!-- {{template?.serviceCodeEntity?.name}} -->
     </header>
 
 
     <div class="prsb-sm">
+        <br/>
+        <!-- <p>ID: {{template?.id}}</p> -->
 
         <label for="effDate">Effective date <small>(optional)</small> </label>
-        <input class="round-corner" type="date" name="effDate" id="effDate" />
-        <!-- [(ngModel)]="template.effective_date"  -->
+        <input [(ngModel)]="template.effective_date" class="round-corner" type="date" name="effDate" id="effDate"
+            value="{{template?.effective_date}}" /> 
+        <!-- <br> -->
 
         <label for="expDate">Expiry date <small>(optional)</small></label>
-        <input class="round-corner" type="date" name="expDAte" id="">
-        <!-- [(ngModel)]="template.end_date" -->
-
-        <br><br>
-
-
-        <app-file-upload></app-file-upload>
-
+        <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="expDate"
+            value="{{template?.end_date}}">
+        <!-- <br> -->
+        
     </div>
+    
+    <a class="clickable">View template</a>
+    <app-file-upload></app-file-upload>
 
+    <div class="controls">
+        <button class="green" (click)="updateTemplate()">Apply Changes</button>
+        <button class="red" (click)="deleteTemplate()">Delete Template</button>
+    </div>
 
 
 
