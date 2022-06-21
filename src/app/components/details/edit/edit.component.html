@@ -10,22 +10,26 @@
 
 
     <div class="prsb-sm">
-        <br/>
+        <br />
         <!-- <p>ID: {{template?.id}}</p> -->
 
         <label for="effDate">Effective date <small>(optional)</small> </label>
         <input [(ngModel)]="template.effective_date" class="round-corner" type="date" name="effDate" id="effDate"
-            value="{{template?.effective_date}}" /> 
+            value="{{template?.effective_date}}" />
         <!-- <br> -->
 
         <label for="expDate">Expiry date <small>(optional)</small></label>
         <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="expDate"
             value="{{template?.end_date}}">
         <!-- <br> -->
-        
+
     </div>
-    
-    <a class="clickable">View template</a>
+
+    <a  class="clickable" 
+        [href]="" 
+        [download]="template?.serviceCodeEntity?.name" 
+        title="download {{template?.serviceCodeEntity?.name}}">
+    </a>
     <app-file-upload></app-file-upload>
 
     <div class="controls">

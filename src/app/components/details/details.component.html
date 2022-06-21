@@ -6,10 +6,11 @@
 <p>Created: {{template?.create_time}}</p>
 <p>Last modified: {{template?.update_time}}</p>
 <h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
-<a class="clickable">View template</a>
+
+<a class="clickable" target="_blank" routerLink="/templates/details/:{{template.id}}/view">View template</a>
 <br/><br/>
 
-<p>Effective since: {{template?.effective_date}}</p>
+<p *ngIf="template?.effective_date">Effective since: {{template?.effective_date}}</p>
 <div *ngIf="template?.end_date" class="prsb-lg">
     <div id="alertMessagesBox" class="prsb-alert-box prsb-warning ">
         <span class="prsb-lg-text">
