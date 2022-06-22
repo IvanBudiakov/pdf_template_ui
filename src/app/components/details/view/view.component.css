@@ -1,7 +1,8 @@
-.content{
+.content {
     background-color: rgb(240, 240, 240);
-    padding:3rem;
-    margin-bottom:7rem;
+    padding: 3rem;
 }
 
-
+.container {
+    margin-bottom: 7rem;
+}

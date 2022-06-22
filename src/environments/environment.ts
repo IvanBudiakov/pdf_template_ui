@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   redirectUri: 'http://localhost:4200',
-  restBase: 'http://localhost:8080'
+  restBase: 'http://localhost:8080',
+  genBase: 'http://localhost:8888'
 };
 
 /*

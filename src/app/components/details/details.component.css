@@ -4,3 +4,7 @@
     cursor:pointer;
     text-decoration: underline;
 }
+
+.round-corner{
+    border-radius : .3rem;
+}

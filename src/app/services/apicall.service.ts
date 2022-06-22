@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { environment } from "../../environments/environment";
 
 import { Injectable } from '@angular/core';
+import { Pdf } from '../model/pdf';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,8 @@ export class ApicallService {
   constructor(private httpClient: HttpClient) { }
   app !: AppComponent;
   baseURL: string = environment.restBase;
+  genUrl : string = environment.genBase;
+  redirectUri : string = environment.redirectUri;
 
   getAllTemplates(): Observable<Template[]> {
     return this.httpClient.get<Template[]>(this.baseURL + '/templates/findAll');
@@ -23,7 +26,6 @@ export class ApicallService {
   getAllServices(): Observable<Service[]> {
     return this.httpClient.get<Service[]>(this.baseURL + '/findAll');
   }
-
 
   getTemplateById(id: string): Observable<Template> {
     return this.httpClient.get<Template>(this.baseURL + '/templates/findById?id=' + id)
@@ -49,6 +51,11 @@ export class ApicallService {
 
   deleteTemplate(id: string): Observable<Template> {
     return this.httpClient.delete<Template>(this.baseURL + '/templates/deleteTemplate?id=' + id)
+  }
+
+  getPdf(firstName : string, lastName : string, service_code : number): Observable<Pdf>{
+    return  this.httpClient.get<Pdf>(this.genUrl + 
+          `/pdfapi/getTemplate?firstName=${firstName}&lastName=${lastName}&version=1&serviceCode=${service_code.toString()}`)
   }
 
 }

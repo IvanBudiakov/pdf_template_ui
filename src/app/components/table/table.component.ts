@@ -16,32 +16,30 @@ export class TableComponent implements OnInit {
   count = 0;
   tableSize = 5;
   tableSizes = [5, 10, 20];
-  
+
   constructor(
-              // private templateService :  TemplatesService,
-              private apiCall: ApicallService, 
-              // private router: Router
-             ) {}
-    
+    private apiCall: ApicallService,
+  ) { }
+
 
   ngOnInit() {
     this.fetchData()
   }
-  
+
   fetchData(): void {
-    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(ret=>{this.templates = ret.sort()});
+    this.apiCall.getAllTemplates().pipe(take(1)).subscribe(ret => { this.templates = ret.sort() });
   }
-  
-  onTableDataChange(event: any){
+
+  onTableDataChange(event: any) {
     this.page = event;
     this.fetchData();
   }
 
   onTableSizeChange(event: any): void {
-      this.tableSize = event.target.value;
-      this.page = 1;
-      this.fetchData();
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.fetchData();
   }
-  
+
 
 }

@@ -29,7 +29,6 @@ export class AddTemplateComponent implements OnInit {
   constructor(
     private apicall: ApicallService,
     private router: Router
-    // private configLoad : ConfigloadService
   ) { }
 
   ngOnInit(): void {

@@ -16,6 +16,9 @@ import { FormsModule } from '@angular/forms';
 import { ConfigloadService } from './services/configload.service';
 import { SuccessComponent } from './components/templates/success/success.component';
 import { FileUploadComponent } from './components/add-template/file-upload/file-upload.component';
+import { ViewComponent } from './components/details/view/view.component';
+import { SafeHtmlPipe } from './components/details/view/safeHtmlPipe';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +33,8 @@ import { FileUploadComponent } from './components/add-template/file-upload/file-
     AddTemplateComponent,
     FileUploadComponent,
     SuccessComponent,
+    ViewComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

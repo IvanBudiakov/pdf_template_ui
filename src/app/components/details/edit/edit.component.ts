@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Template } from 'src/app/model/template';
 import { ApicallService } from 'src/app/services/apicall.service';
 import { ConfigloadService } from 'src/app/services/configload.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { content } from '../../add-template/file-upload/file-upload.component';
 
 
@@ -46,7 +46,7 @@ export class EditComponent implements OnInit {
       this.apicall.getTemplateById(this.template.id.toString()).subscribe(data => {
         console.warn(data);
       });
-      setTimeout(() => { this.router.navigateByUrl('/home') }, 1000);
+      setTimeout(() => { this.router.navigateByUrl('/templates/details/:' + this.template.id.toString()) }, 1000);
       this.showMsg = true;
     });
   }
@@ -57,7 +57,6 @@ export class EditComponent implements OnInit {
         setTimeout(() => { this.router.navigateByUrl('/home') }, 1000);
         this.showMsg = true;;
       });
-
     }
   }
 }

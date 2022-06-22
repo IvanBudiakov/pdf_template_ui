@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Pdf } from 'src/app/model/pdf';
 import { Template } from 'src/app/model/template';
 import { ApicallService } from 'src/app/services/apicall.service';
 
+declare var require: any;
 
 @Component({
   selector: 'app-details',
@@ -13,6 +15,11 @@ export class DetailsComponent implements OnInit {
 
   id !: string;
   template !: Template;
+  firstName !: string;
+  lastName !: string;
+  newPdf = new Pdf;
+  isShowForm: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
     private apicall: ApicallService
@@ -24,4 +31,20 @@ export class DetailsComponent implements OnInit {
 
   }
 
+  requestPdf() {
+    this.apicall.getPdf(this.firstName, this.lastName, this.template.serviceCodeEntity.service_code)
+      .subscribe((data) => {
+        this.newPdf = data;
+        console.log(this.newPdf.pdf)
+          var blob = new Blob([new Uint8Array(data.pdf)] , { type: 'application/pdf' });
+          var blobUrl = URL.createObjectURL(blob);
+          window.open(blobUrl);
+      })
+  }
+
+  showForm() {
+    if (!this.isShowForm)
+      this.isShowForm = true;
+    else this.isShowForm = false;
+  }
 }

@@ -1,32 +1,40 @@
 <div style="padding-bottom:7rem">
-<header style="background-color: #4d4d4d;">
-    <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">{{template?.serviceCodeEntity?.name}}</h2>
-</header>
+    <header style="background-color: #4d4d4d;">
+        <h2 class="prsb-white-text prsb-pad-10 prsb-uppercase">{{template?.serviceCodeEntity?.name}}</h2>
+    </header>
 
-<p>Created: {{template?.create_time}}</p>
-<p>Last modified: {{template?.update_time}}</p>
-<h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
+    <p>Created: {{template?.create_time}}</p>
+    <p>Last modified: {{template?.update_time}}</p>
+    <h5>Service Code: {{template?.serviceCodeEntity?.service_code}}</h5>
 
-<a class="clickable" target="_blank" routerLink="/templates/details/:{{template.id}}/view">View template</a>
-<br/><br/>
+    <a class="clickable" routerLink="/templates/details/:{{template?.id}}/view">View template</a>
 
-<p *ngIf="template?.effective_date">Effective since: {{template?.effective_date}}</p>
-<div *ngIf="template?.end_date" class="prsb-lg">
-    <div id="alertMessagesBox" class="prsb-alert-box prsb-warning ">
-        <span class="prsb-lg-text">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="none">
-                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffd440" />
-                <path d="M11 10h2v4h-2zm0 6h2v2h-2z" fill="#000" />
-            </svg>
-            Expires {{template.end_date}}</span>
+    <br />
+    <br />
+
+    <p *ngIf="template?.effective_date">Effective since: {{template?.effective_date}}</p>
+    <div *ngIf="template?.end_date" class="prsb-lg">
+        <div id="alertMessagesBox" class="prsb-alert-box prsb-warning ">
+            <span class="prsb-lg-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" fill="none">
+                    <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="#ffd440" />
+                    <path d="M11 10h2v4h-2zm0 6h2v2h-2z" fill="#000" />
+                </svg>
+                Expires {{template.end_date}}</span>
+        </div>
     </div>
+
+    <button routerLink="edit">Edit Template</button>
+
+    <button (click)="showForm()">Request PDF</button>
+    <div *ngIf="isShowForm" class="requestContainer prsb-med">
+        <label for="first">First Name</label>
+        <input class="round-corner" [(ngModel)]="firstName" type="text" name="first" id="first">
+        <label for="last">Last Name</label>
+        <input class="round-corner" [(ngModel)]="lastName" type="text" name="last" id="last">
+        <button (click)="requestPdf()">Request</button>
+    </div>
+
+    <app-go-back></app-go-back>
+
 </div>
-
-
-<button routerLink="edit">Edit Template</button>
-
-<app-go-back></app-go-back>
-</div>
-<router-outlet></router-outlet>
-
-

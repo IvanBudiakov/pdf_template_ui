@@ -19,8 +19,6 @@
         <input [(ngModel)]="template.end_date" class="round-corner" type="date" name="expDAte" id="expDate"
             min="{{this.today}}" max="{{this.in10Years}}">
 
-        <!-- app_initializer -->
-
     </div>
 
     <p *ngIf="this.validateDates()" class="wrong">{{validateDates()}}</p>

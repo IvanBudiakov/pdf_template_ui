@@ -33,7 +33,6 @@ export class FileUploadComponent implements OnInit {
       let fileReader = new FileReader();
       fileReader.onload = (e) => {
         content = (fileReader.result as string)!;
-        // fileName = (file.name as string)!;
         console.log(fileReader.result);
       }
       fileReader.readAsText(file);
