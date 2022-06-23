@@ -49,6 +49,7 @@ export class AddTemplateComponent implements OnInit {
       this.apicall.addTemplate(this.template).subscribe(data => {
         console.warn(data);
         this.isValid = true;
+        //displaying success after template is updated
         setTimeout(() => { this.router.navigateByUrl('/home') }, 1000);
         this.showMsg = true;
       })
@@ -69,6 +70,8 @@ export class AddTemplateComponent implements OnInit {
   }
 
   validateDates(): string | null {
+
+    //adjusting the time zone
     let fromDate = new Date(this.template.effective_date?.toString().slice(0, 10).replace(/-/g, '/'));
     let toDate = new Date(this.template.end_date?.toString().slice(0, 10).replace(/-/g, '/'));
 

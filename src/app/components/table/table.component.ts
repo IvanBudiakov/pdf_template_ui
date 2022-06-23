@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
     private apiCall: ApicallService,
   ) { }
 
-
+    //table component is a reusable component with pagination and sizing enabled 
   ngOnInit() {
     this.fetchData()
   }

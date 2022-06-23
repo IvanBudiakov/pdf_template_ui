@@ -25,6 +25,9 @@ export class DetailsComponent implements OnInit {
     private apicall: ApicallService
   ) { }
 
+  //details component displays info about the template and has holds control buttons like 
+  //edit or request pdf
+
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id')?.substring(1)!;
     this.apicall.getTemplateById(this.id).subscribe(temp => { this.template = temp });
@@ -36,9 +39,10 @@ export class DetailsComponent implements OnInit {
       .subscribe((data) => {
         this.newPdf = data;
         console.log(this.newPdf.pdf)
-          var blob = new Blob([new Uint8Array(data.pdf)] , { type: 'application/pdf' });
-          var blobUrl = URL.createObjectURL(blob);
-          window.open(blobUrl);
+        //creating a blob pdf file from a byte array 
+        var blob = new Blob([new Uint8Array(data.pdf)], { type: 'application/pdf' });
+        var blobUrl = URL.createObjectURL(blob);
+        window.open(blobUrl);
       })
   }
 

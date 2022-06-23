@@ -38,6 +38,8 @@ export class EditComponent implements OnInit {
     if (content !== null)
       this.template.html = content;
 
+
+      //correcting the time zone
     this.template.effective_date = new Date(this.template.effective_date?.toString().slice(0, 10).replace(/-/g, '/'));
     this.template.end_date = new Date(this.template.end_date?.toString().slice(0, 10).replace(/-/g, '/'));
 
@@ -46,6 +48,7 @@ export class EditComponent implements OnInit {
       this.apicall.getTemplateById(this.template.id.toString()).subscribe(data => {
         console.warn(data);
       });
+      //displaying success after template is updated
       setTimeout(() => { this.router.navigateByUrl('/templates/details/:' + this.template.id.toString()) }, 1000);
       this.showMsg = true;
     });
@@ -54,6 +57,7 @@ export class EditComponent implements OnInit {
   deleteTemplate() {
     if (confirm('Are you sure you want to delete the template?')) {
       this.apicall.deleteTemplate(this.template.id.toString()).subscribe(status => {
+      //displaying success after template is deleted
         setTimeout(() => { this.router.navigateByUrl('/home') }, 1000);
         this.showMsg = true;;
       });
